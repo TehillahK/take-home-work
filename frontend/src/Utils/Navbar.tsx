@@ -1,4 +1,6 @@
-const Navbar = () => {
+import Product from "../interfaces/Product";
+
+const Navbar = ({purchasedProducts}:{purchasedProducts:Product[]}) => {
     return (
         <div className="navbar bg-base-100">
             <div className="flex-1">

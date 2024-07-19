@@ -1,3 +1,4 @@
+import { DialogHTMLAttributes } from "react";
 import Product from "../interfaces/Product";
 
 const ProductCard = ({id,name,price ,photoUrl}:Product) => {
@@ -13,7 +14,20 @@ const ProductCard = ({id,name,price ,photoUrl}:Product) => {
                 <h2 className="card-title">{name}</h2>
                 <p>If a dog chews shoes whose shoes does he choose?</p>
                 <div className="card-actions">
-                    <button className="btn btn-primary">Buy Now</button>
+                    <button 
+                        className="btn btn-primary"
+                        onClick={
+                            ()=>{
+                                const modalElement = document.getElementById("product_modal") as HTMLDialogElement;
+                                if(modalElement){
+                                    modalElement?.showModal() ;
+                                }
+                                
+                            }
+                        }
+                    >
+                        Add to Cart
+                        </button>
                 </div>
             </div>
         </div>
