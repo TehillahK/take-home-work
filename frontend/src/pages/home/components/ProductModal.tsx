@@ -1,4 +1,4 @@
-const ProductModal = ({ addCart ,productID}:{productID:number , addCart:(productID:number , quantity:number)=>void}) => {
+const ProductModal = ({ addCart ,productID}:{productID:number|undefined|null , addCart:(productID:number , quantity:number)=>void}) => {
     return (
         <dialog id="product_modal" className="modal modal-bottom sm:modal-middle">
             <div className="modal-box">
@@ -20,7 +20,14 @@ const ProductModal = ({ addCart ,productID}:{productID:number , addCart:(product
                 <button
                     className="btn w-full"
                     onClick={
-                        ()=>addCart(productID , 0)
+                        ()=>{
+                            addCart(productID as number, 0);
+                            const modalElement = document.getElementById("product_modal") as HTMLDialogElement;
+                            if(modalElement){
+                                modalElement?.close() ;
+                            }
+                        }
+
                     }
                 >
                     Add to Cart

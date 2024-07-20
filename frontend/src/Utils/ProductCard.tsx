@@ -1,9 +1,10 @@
-import { DialogHTMLAttributes } from "react";
-import Product from "../interfaces/Product";
 
-const ProductCard = ({id,name,price ,photoUrl}:Product) => {
+
+const ProductCard = ({id,name,price ,photoUrl , clickProduct}:{id:number , name:string ,price :number , photoUrl:string , clickProduct:(productID:number)=>void }) => {
     return (
-        <div className="card glass w-96 shadow-xl">
+        <div className="card glass w-96 shadow-xl"
+            
+        >
             <figure className="px-10 pt-10">
                 <img
                     src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
@@ -18,6 +19,8 @@ const ProductCard = ({id,name,price ,photoUrl}:Product) => {
                         className="btn btn-primary"
                         onClick={
                             ()=>{
+                                console.log(id)
+                                clickProduct(id)
                                 const modalElement = document.getElementById("product_modal") as HTMLDialogElement;
                                 if(modalElement){
                                     modalElement?.showModal() ;
